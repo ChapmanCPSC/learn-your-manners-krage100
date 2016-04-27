@@ -38,8 +38,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Item" id="exC-DN-AgZ"/>
-                        <barButtonItem title="Item" id="3Zb-vI-o5L"/>
+                        <barButtonItem id="exC-DN-AgZ"/>
+                        <barButtonItem id="3Zb-vI-o5L"/>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
