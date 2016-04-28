@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UITableViewController {
     var bools : [Bool] = [false,false,false,false,false,false,false,false]
+    @IBOutlet weak var summaryButton: UIButton!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     var manners : [MannerP] = [
         Manner(color: UIColor.redColor(), name: "Knock Manner",imgName: "knockClosedManner",detail: "Knock on closed doors -- and wait to see if there's a response -- before entering."),
         Manner(color: UIColor.purpleColor(), name: "Please Manner",imgName: "pleaseManner",detail: "When asking for something, say 'Please"),
@@ -21,6 +23,30 @@ class ViewController: UITableViewController {
         Manner(color: UIColor.purpleColor(), name: "Mouth Manner",imgName: "mouthManner",detail: "Chew with your mouth closed."),
     ]
     
+    @IBAction func goToSettings(sender: AnyObject) {
+        let output = NSUserDefaults.standardUserDefaults().objectForKey("email")
+        if(output != nil)
+        {
+            if(output as? String != nil && output as? String != "")
+            {
+                let emailAdd = (output) as! String
+                sendEmail(emailAdd)
+                
+            }
+            
+        }
+    }
+    func sendEmail(email : String)
+    {
+        var body : String = ""
+        if(bools[0])
+        {
+            body += "I learned how to knock on the door\n"
+        }
+        print(body)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +54,7 @@ class ViewController: UITableViewController {
         
         let cellNib = UINib(nibName: "ShapeTableViewCell", bundle: nil)
         self.tableView.registerNib(cellNib, forCellReuseIdentifier: "shape_cell")
+        summaryButton.enabled = false
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,6 +67,10 @@ class ViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("shape_cell") as! ShapeTableViewCell
         cell.initWithShape(manner)
+        let email = NSUserDefaults.standardUserDefaults().objectForKey("email")
+        if email != nil{
+            summaryButton.enabled = true
+        }
         if !bools[indexPath.row]{
             cell.accessoryType = .None
         }

@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Email View Controller-->
         <scene sceneID="w08-rY-zHx">
             <objects>
-                <viewController id="Hml-Qe-1fQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="emailSetter" id="Hml-Qe-1fQ" customClass="EmailViewController" customModule="ShapeDetails" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Elt-bv-QMG"/>
                         <viewControllerLayoutGuide type="bottom" id="KHw-8g-Ja0"/>
@@ -21,16 +21,45 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUm-8t-Joa">
                                 <rect key="frame" x="34" y="28" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="Hml-Qe-1fQ" eventType="touchDown" id="a0v-NI-PBn"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Send email to :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpd-XX-O4Y">
+                                <rect key="frame" x="244" y="175" width="113" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-gO-PbQ">
+                                <rect key="frame" x="154" y="239" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="changeEmail:" destination="Hml-Qe-1fQ" eventType="editingDidEnd" id="MMc-vG-73b"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kUm-8t-Joa" firstAttribute="leading" secondItem="3Yr-eT-Po6" secondAttribute="leadingMargin" constant="8" id="E8r-cm-erL"/>
+                            <constraint firstItem="UPq-gO-PbQ" firstAttribute="leading" secondItem="3Yr-eT-Po6" secondAttribute="leadingMargin" constant="134" id="Juw-b7-X0N"/>
+                            <constraint firstItem="xpd-XX-O4Y" firstAttribute="top" secondItem="Elt-bv-QMG" secondAttribute="bottom" constant="151" id="Pxf-Hl-cjd"/>
+                            <constraint firstItem="UPq-gO-PbQ" firstAttribute="top" secondItem="xpd-XX-O4Y" secondAttribute="bottom" constant="43" id="aEv-HW-9P4"/>
+                            <constraint firstItem="xpd-XX-O4Y" firstAttribute="leading" secondItem="3Yr-eT-Po6" secondAttribute="leadingMargin" constant="259" id="axB-AP-Fmp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kUm-8t-Joa" secondAttribute="trailing" constant="506" id="hi0-jO-klg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xpd-XX-O4Y" secondAttribute="trailing" constant="259" id="j3U-VD-8uQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UPq-gO-PbQ" secondAttribute="trailing" constant="133" id="kJ7-Ge-oxj"/>
+                            <constraint firstItem="KHw-8g-Ja0" firstAttribute="top" secondItem="xpd-XX-O4Y" secondAttribute="bottom" constant="408" id="kh1-e5-ame"/>
                             <constraint firstItem="KHw-8g-Ja0" firstAttribute="top" secondItem="kUm-8t-Joa" secondAttribute="bottom" constant="542" id="qcE-dz-Jeh"/>
+                            <constraint firstItem="KHw-8g-Ja0" firstAttribute="top" secondItem="UPq-gO-PbQ" secondAttribute="bottom" constant="331" id="r4C-U9-ojX"/>
                             <constraint firstItem="kUm-8t-Joa" firstAttribute="top" secondItem="Elt-bv-QMG" secondAttribute="bottom" constant="8" id="sOp-EM-pWr"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="pEl-La-M2h"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="UPq-gO-PbQ" id="8Eo-aW-mb2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeb-Oh-O9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,11 +68,16 @@
         <!--View Controller-->
         <scene sceneID="4kF-zY-dxH">
             <objects>
-                <tableViewController id="h8u-GZ-hBU" customClass="ViewController" customModule="Manners" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="h8u-GZ-hBU" customClass="ViewController" customModule="ShapeDetails" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="37" sectionHeaderHeight="28" sectionFooterHeight="28" id="CWH-LU-yoe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ffV-fi-xJh">
+                            <rect key="frame" x="0.0" y="65" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Send Summary"/>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="37" id="edG-r4-xjg">
                                 <rect key="frame" x="0.0" y="28" width="600" height="37"/>
@@ -52,12 +86,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1u-3g-ScJ">
+                                        <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npZ-tF-C3f">
                                             <rect key="frame" x="0.0" y="-4" width="600" height="44"/>
                                             <items>
-                                                <barButtonItem systemItem="fastForward" id="u3T-sX-oAk"/>
+                                                <navigationItem title="Title" id="9YM-yr-pi9">
+                                                    <barButtonItem key="rightBarButtonItem" title="Summary" id="gbP-mm-Aub"/>
+                                                </navigationItem>
                                             </items>
-                                        </toolbar>
+                                        </navigationBar>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -67,11 +103,12 @@
                             <outlet property="delegate" destination="h8u-GZ-hBU" id="RSG-Fc-uUW"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem id="exC-DN-AgZ"/>
-                        <barButtonItem id="3Zb-vI-o5L"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="summaryButton" destination="ffV-fi-xJh" id="os5-dJ-fhe"/>
+                        <segue destination="Hml-Qe-1fQ" kind="push" identifier="settingsSegue" id="ZFS-rj-hPl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YpJ-Hn-13R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,7 +117,7 @@
         <!--Shape Detail View Controller-->
         <scene sceneID="Tkh-mn-hic">
             <objects>
-                <viewController id="wKq-8g-C8K" customClass="ShapeDetailViewController" customModule="Manners" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wKq-8g-C8K" customClass="ShapeDetailViewController" customModule="ShapeDetails" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F5B-f6-PJT"/>
                         <viewControllerLayoutGuide type="bottom" id="cgK-Jn-bT9"/>
